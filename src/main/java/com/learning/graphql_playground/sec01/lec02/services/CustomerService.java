@@ -1,5 +1,6 @@
 package com.learning.graphql_playground.sec01.lec02.services;
 
+import com.learning.graphql_playground.sec01.lec02.dto.AgeRangeFilter;
 import com.learning.graphql_playground.sec01.lec02.entities.Customer;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -24,5 +25,9 @@ public class CustomerService {
 
     public Flux<Customer> customersByName(String name){
         return flux.filter(c -> c.getName().contains(name));
+    }
+
+    public Flux<Customer> customersBetweenAge(AgeRangeFilter ageRangeFilter) {
+        return flux.filter(c -> c.getAge()> ageRangeFilter.getMinAge() && c.getAge()< ageRangeFilter.getMaxAge());
     }
 }

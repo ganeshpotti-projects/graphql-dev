@@ -1,5 +1,6 @@
 package com.learning.graphql_playground.sec01.lec02.controllers;
 
+import com.learning.graphql_playground.sec01.lec02.dto.AgeRangeFilter;
 import com.learning.graphql_playground.sec01.lec02.entities.Customer;
 import com.learning.graphql_playground.sec01.lec02.services.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,10 @@ public class CustomerController {
     @QueryMapping("customersByName")
     public Flux<Customer> customersByName(@Argument("name") String value){
         return customerService.customersByName(value);
+    }
+
+    @QueryMapping("customersBetweenAge")
+    public Flux<Customer> customersBetweenAge(@Argument("filter")AgeRangeFilter ageRangeFilter){
+        return customerService.customersBetweenAge(ageRangeFilter);
     }
 }

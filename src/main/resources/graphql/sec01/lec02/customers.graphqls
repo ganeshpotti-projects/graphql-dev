@@ -1,17 +1,25 @@
-type Query{
-    # Fetch All Customers
-    customers: [Customer]!
-
-    # Fetch Customer by Id
-    customerById(id: ID!): Customer
-
-    # Fetch Customers by Name
-    customersByName(name: String): [Customer]
-}
-
-type Customer{
-    id: ID
-    name: String
-    age: Int
-    city: String
-}
+#type Query{
+#    # Fetch All Customers
+#    customers: [Customer]!
+#
+#    # Fetch Customer by Id
+#    customerById(id: ID!): Customer
+#
+#    # Fetch Customers by Name
+#    customersByName(name: String): [Customer]
+#
+#    # Fetch Customers between Age
+#    customersBetweenAge(filter: AgeFilter): [Customer]!
+#}
+#
+#type Customer{
+#    id: ID
+#    name: String
+#    age: Int
+#    city: String
+#}
+#
+#input AgeFilter{
+#    minAge: Int
+#    maxAge: Int
+#}
