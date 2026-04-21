@@ -1,13 +1,17 @@
 package com.learning.graphql_playground.sec01.lec04.services;
 
+import com.learning.graphql_playground.sec01.lec03.entities.Customer;
 import com.learning.graphql_playground.sec01.lec04.dto.CustomerOrder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class OrderService {
@@ -24,6 +28,14 @@ public class OrderService {
     );
 
     public Flux<List<CustomerOrder>> ordersByCustomerName(List<String> names){
-        return Flux.fromIterable(names).map(name -> map.getOrDefault(name, Collections.emptyList()));
+        return Flux.fromIterable(names).flatMapSequential(name ->
+                fetchOrders(name)
+                        .defaultIfEmpty(Collections.emptyList())
+        );
+    }
+
+    public Mono<List<CustomerOrder>> fetchOrders(String name){
+        return Mono.justOrEmpty(map.get(name))
+                .delayElement(Duration.ofMillis(ThreadLocalRandom.current().nextInt(0, 500)));
     }
 }
