@@ -1,8 +1,6 @@
 package com.learning.graphql_playground.lec06.controllers;
 
-import com.learning.graphql_playground.lec06.dto.CustomerOrder;
 import com.learning.graphql_playground.lec06.dto.CustomerWithOrder;
-import com.learning.graphql_playground.lec06.entities.Customer;
 import com.learning.graphql_playground.lec06.services.CustomerOrderDataFetcher;
 import com.learning.graphql_playground.lec06.services.CustomerService;
 import com.learning.graphql_playground.lec06.services.OrderService;
