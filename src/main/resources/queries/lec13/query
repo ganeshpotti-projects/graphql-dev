@@ -1,0 +1,42 @@
+query GetAll{
+  customers{
+    id
+    name
+    age
+    city
+  }
+}
+
+query Get{
+  customer(id: 5){
+    id
+    name
+    age
+    city
+  }
+}
+
+mutation Create($customer: CustomerInput!){
+  createCustomer(customer: $customer){
+    id
+    name
+    age
+    city
+  }
+}
+
+mutation Update($id: ID!, $customer: CustomerInput!){
+  updateCustomer(id: $id, customer: $customer){
+    id
+    name
+    age
+    city
+  }
+}
+
+mutation Delete($id : ID!){
+  deleteCustomer(id: $id){
+    id
+    status
+  }
+}
