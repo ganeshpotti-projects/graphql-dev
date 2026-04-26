@@ -1,8 +1,8 @@
-package com.learning.graphql_playground.lec13.controller;
+package com.learning.graphql_playground.lec14.controller;
 
-import com.learning.graphql_playground.lec13.dto.CustomerDto;
-import com.learning.graphql_playground.lec13.dto.DeleteResponseDto;
-import com.learning.graphql_playground.lec13.services.CustomerService;
+import com.learning.graphql_playground.lec14.dto.CustomerDto;
+import com.learning.graphql_playground.lec14.dto.DeleteResponseDto;
+import com.learning.graphql_playground.lec14.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;

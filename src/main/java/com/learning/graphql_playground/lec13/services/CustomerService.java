@@ -1,9 +1,9 @@
-package com.learning.graphql_playground.lec13.repositories;
+package com.learning.graphql_playground.lec13.services;
 
 import com.learning.graphql_playground.lec13.dto.CustomerDto;
 import com.learning.graphql_playground.lec13.dto.DeleteResponseDto;
-import com.learning.graphql_playground.lec13.entities.Customer;
 import com.learning.graphql_playground.lec13.enums.Status;
+import com.learning.graphql_playground.lec13.repositories.CustomerRepository;
 import com.learning.graphql_playground.lec13.util.EntityDtoUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
