@@ -1,0 +1,31 @@
+package com.learning.graphql_playground.lec16.clientapp.client;
+
+import com.learning.graphql_playground.lec16.dto.MultiCustomerAssignment;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.graphql.client.ClientGraphQlResponse;
+import org.springframework.graphql.client.HttpGraphQlClient;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+@Service
+public class CustomerClient {
+
+    private final HttpGraphQlClient client;
+
+    public CustomerClient(@Value("${customer.service.url}") String baseUrl){
+        client = HttpGraphQlClient.builder()
+                .webClient(b -> b.baseUrl(baseUrl))
+                .build();
+    }
+
+    public Mono<ClientGraphQlResponse> rawQuery(String query){
+        return client.document(query).execute();
+    }
+
+    public Mono<MultiCustomerAssignment> getCustomerById(Integer id){
+        return client
+                .documentName("customer-by-id").variable("id", id)
+                .retrieve("")
+                .toEntity(MultiCustomerAssignment.class);
+    }
+}
